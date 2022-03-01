@@ -12,7 +12,7 @@ class ButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) => ElevatedButton(
         style: ElevatedButton.styleFrom(
-          minimumSize: Size.fromHeight(52),
+          // minimumSize: Size.fromHeight(52),
           primary: Colors.white,
           elevation: 5,
           shape: RoundedRectangleBorder(
@@ -21,7 +21,7 @@ class ButtonWidget extends StatelessWidget {
         ),
         child: Text(
           text,
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
         ),
         onPressed: onClicked,
       );

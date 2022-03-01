@@ -22,12 +22,16 @@ class UserSimplePreferences {
   static List<String> getPets() => _preferences.getStringList(_keyPets);
 
   static Future setBirthday(DateTime dateOfBirth) async {
-    final birthday = dateOfBirth.toIso8601String();
-    await _preferences.setString(_keyBirthday, birthday);
+    final birthday = dateOfBirth == null ? '' : dateOfBirth.toIso8601String();
+    return await _preferences.setString(_keyBirthday, birthday);
   }
 
   static DateTime getBirthday() {
     final birthday = _preferences.getString(_keyBirthday);
     return birthday == null ? null : DateTime.tryParse(birthday);
+  }
+
+  static deleteData() {
+    _preferences.clear();
   }
 }

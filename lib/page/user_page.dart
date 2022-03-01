@@ -46,7 +46,10 @@ class _UserPageState extends State<UserPage> {
               const SizedBox(height: 12),
               buildPets(),
               const SizedBox(height: 32),
-              buildButton(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [buildSaveButton(), buildDeleteButton()],
+              ),
             ],
           ),
         ),
@@ -82,12 +85,18 @@ class _UserPageState extends State<UserPage> {
         ),
       );
 
-  Widget buildButton() => ButtonWidget(
-      text: 'Save',
+  Widget buildSaveButton() => ButtonWidget(
+      text: 'Persist Data',
       onClicked: () async {
         await UserSimplePreferences.setUsername(name);
         await UserSimplePreferences.setBirthday(birthday);
         await UserSimplePreferences.setPets(pets);
+      });
+
+  Widget buildDeleteButton() => ButtonWidget(
+      text: 'Not Persist Data',
+      onClicked: () {
+        UserSimplePreferences.deleteData();
       });
 
   Widget buildTitle({
